@@ -5,7 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Properties;
-
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -39,6 +40,7 @@ public class SearchFile extends JFrame {
 				try {
 					SearchFile frame = new SearchFile();
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -48,18 +50,24 @@ public class SearchFile extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws UnsupportedLookAndFeelException 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
+	 * @throws ClassNotFoundException 
 	 */
-	public SearchFile() {
+	public SearchFile() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		UIManager.setLookAndFeel("com.jtattoo.plaf.noire.NoireLookAndFeel");
 		setContentPane(contentPane);
-
+		
 		comboBox = new JComboBox();
 		comboBox.setModel(
-				new DefaultComboBoxModel(new String[] { "file:///Users/ramsesdiezgalvan/Desktop/pruebaBusqueda" }));
-
+				new DefaultComboBoxModel(new String[] {"file:///Users/ramsesdiezgalvan/Desktop/pruebaBusqueda", "file:///Users/ramsesdiezgalvan/Desktop/pruebaBusqueda", "file:///Users/ramsesdiezgalvan/Desktop/pruebaBusqueda", "file:///Users/ramsesdiezgalvan/Desktop/pruebaBusqueda", "file:///Users/ramsesdiezgalvan/Desktop/pruebaBusqueda"}));
+		
 		JButton btnNewButton = new JButton("Buscar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
